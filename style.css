@@ -1,0 +1,110 @@
+:root{
+  --pink:#ff5fa2;
+  --pink2:#ff8cc0;
+  --bg:#ffffff;
+  --text:#111;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  background: linear-gradient(180deg, #fff, #ffe7f1);
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.card{
+  width:min(92vw, 520px);
+  background:var(--bg);
+  border:1px solid #f3c6da;
+  border-radius:18px;
+  padding:22px 18px 26px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero{
+  width:220px;
+  height:auto;
+  display:block;
+  margin:0 auto 8px;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+h1{ margin: 10px 0 18px; font-size: 34px; }
+
+.buttons{
+  position:relative; /* for "No" absolute positioning */
+  height:72px;       /* enough room for buttons */
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+}
+
+.btn{
+  border:none;
+  padding:10px 26px;
+  border-radius:999px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:16px;
+  transition: transform .08s ease;
+}
+
+.btn:active{ transform: scale(.98); }
+
+.yes{ background: var(--pink); color:white; }
+.no{
+  background: var(--pink2);
+  color:white;
+  position:absolute; /* so we can move it freely */
+  left: 60%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.result{
+  margin-top:14px;
+  animation: pop .35s ease both;
+}
+
+.hidden{ display:none; }
+
+.reset{
+  margin-top:14px;
+  background:#111;
+  color:#fff;
+}
+
+@keyframes pop{
+  from{ transform: translateY(10px); opacity:0; }
+  to{ transform: translateY(0); opacity:1; }
+}
+
+/* sparkles effect */
+.sparkles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.sparkle{
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  opacity:.9;
+  animation: fly 900ms ease-out forwards;
+}
+
+@keyframes fly{
+  from{ transform: translate(0,0) scale(1); opacity:1; }
+  to{ transform: translate(var(--dx), var(--dy)) scale(0); opacity:0; }
+}
